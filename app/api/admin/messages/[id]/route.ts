@@ -1,0 +1,49 @@
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+import { checkAdminAuth } from "@/lib/admin-auth";
+
+export async function PATCH(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const admin = await checkAdminAuth();
+  if (!admin) {
+    return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
+  }
+
+  try {
+    const { id } = await params;
+    const { isRead } = await request.json();
+
+    const updatedMessage = await prisma.contactMessage.update({
+      where: { id },
+      data: { isRead },
+    });
+
+    return NextResponse.json({ success: true, message: updatedMessage });
+  } catch (error: any) {
+    return NextResponse.json({ error: "Failed to update message: " + error.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const admin = await checkAdminAuth();
+  if (!admin) {
+    return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
+  }
+
+  try {
+    const { id } = await params;
+
+    await prisma.contactMessage.delete({
+      where: { id },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    return NextResponse.json({ error: "Failed to delete message: " + error.message }, { status: 500 });
+  }
+}

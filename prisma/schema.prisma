@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String
+  category    String
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Project {
+  id             String               @id @default(cuid())
+  name           String
+  description    String?
+  files          Json                 // JSON array of URLs/sizes
+  generatedToken String               @unique
+  password       String               // hashed
+  expiryDate     DateTime
+  createdAt      DateTime             @default(now())
+  analytics      DownloadAnalytic[]
+}
+
+model DownloadAnalytic {
+  id             String   @id @default(cuid())
+  projectId      String
+  project        Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  downloadCount  Int      @default(0)
+  lastAccessTime DateTime?
+}
+
+model ContactMessage {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  message     String
+  serviceType String
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
