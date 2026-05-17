@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  let featuredItems = [];
+  let featuredItems: any[] = [];
   try {
     featuredItems = await prisma.portfolio.findMany({
       where: { featured: true },
