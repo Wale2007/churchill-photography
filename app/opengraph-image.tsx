@@ -60,20 +60,6 @@ export default async function OgImage() {
           Churchill Concept
         </div>
 
-        {/* Subtitle */}
-        <div
-          style={{
-            fontSize: "24px",
-            fontWeight: 400,
-            color: "#d4af37",
-            textAlign: "center",
-            letterSpacing: "6px",
-            textTransform: "uppercase",
-          }}
-        >
-          Photography
-        </div>
-
         {/* Tagline */}
         <div
           style={{
