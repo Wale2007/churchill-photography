@@ -6,42 +6,36 @@ const services = [
     title: "Lifestyle",
     icon: Camera,
     description: "Natural, storytelling portraits that express your authentic self and capture your unique beauty in elegant environments.",
-    price: "$350+",
     details: ["1.5 Hour Session", "30 Edited High-Res Images", "1 Location", "Online Gallery"],
   },
   {
     title: "Weddings",
     icon: Heart,
     description: "Premium editorial wedding coverage capturing love stories with romance, luxury, and artistic timing.",
-    price: "$2,500+",
     details: ["Full Day Coverage", "Second Photographer", "Engagement Session Included", "Premium Photo Book"],
   },
   {
     title: "Corporate",
     icon: Briefcase,
     description: "High-end corporate portraits, team photos, and brand narrative assets that elevate your business profile.",
-    price: "$500+",
     details: ["Professional Headshots", "Office Environment Shoots", "Commercial Usage Rights", "Express Delivery"],
   },
   {
     title: "Birthdays & Celebrations",
     icon: Gift,
     description: "Vibrant and elegant event documentation to immortalize your milestones and joyous birthday moments.",
-    price: "$450+",
     details: ["3 Hours Coverage", "50+ Edited Photos", "Live Action & Candid Shots", "Digital Delivery"],
   },
   {
     title: "Studio Session",
     icon: Home,
     description: "Controlled luxury studio photography with high-end lighting setups and professional background designs.",
-    price: "$400+",
     details: ["2 Hour Studio Time", "2 Outfit Changes", "15 Fine Art Retouched Images", "Creative Art Direction"],
   },
   {
     title: "Events & Concerts",
     icon: Calendar,
     description: "Dynamic and immersive documentation of premium concerts, fashion shows, corporate events, and galas.",
-    price: "$800+",
     details: ["Comprehensive Event Coverage", "High-Resolution Candid Shots", "Next-Day Highlight Delivery", "Online Proofing Gallery"],
   },
 ];
@@ -81,12 +75,6 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div>
-                  <div className="flex items-center justify-between pt-6 border-t border-brand-gray">
-                    <span className="text-brand-dark-gray text-xs uppercase tracking-widest">Investment</span>
-                    <span className="font-serif text-xl font-bold text-brand-gold">{service.price}</span>
-                  </div>
                 </div>
               </div>
             );
